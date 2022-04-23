@@ -19,10 +19,9 @@ public class DictionaryFileExists {
 
 		df.doesFileExist(df.path);
 
-				
 		File f1 = new File(df.path);
-		
-		FileWriter fw= new FileWriter(f1);
+
+		FileWriter fw = new FileWriter(f1);
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write("Apple-a fruit, a tech firm");
 		bw.newLine();
@@ -31,29 +30,27 @@ public class DictionaryFileExists {
 		bw.write("Orange-a fruit");
 		bw.newLine();
 		bw.close();
-		
-		
+
 		List<String> allLines = new ArrayList<String>();
 		FileReader fr = new FileReader(f1);
 		BufferedReader br = new BufferedReader(fr);
 
 		String line = "";
-		int i=1;
+		int count = 1;
 
-		
 		while ((line = br.readLine()) != null) {
 			allLines.add(line);
-		
-		
+
+
 		String[] splitLine= line.split("-");
 		String[] meaning= splitLine[1].split(",");
-		
-		System.out.println("Word" + i + ": " + splitLine[0].trim());
-		i++;
+			
+		System.out.println("Word" + count + ": " + splitLine[0]);
+		count++;
 
-		for(int j=0; j < meaning.length; j++)
+		for(int i=0; i < meaning.length; i++)
 		{
-    		System.out.println("Meaning" + (j + 1) + ": " + meaning[j].trim());
+    		System.out.println("Meaning" + (i + 1) + ": " + meaning[i].trim());
 		}
 
 		}
@@ -61,16 +58,16 @@ public class DictionaryFileExists {
 
 	public void doesFileExist(String p) {
 
-		File f = new File(path);
+		try {
+			File f = new File(path);
 
-		if (f.exists()) {
-			System.out.println("File exists.");
-		} else {
-			System.out.println("File does not exist!");
+			if (!f.exists()) {
+				throw new FileNotFoundException();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("The File Does not Exixt in the Specified Path!");
 		}
+
 	}
 
-	
-
-	
 }
