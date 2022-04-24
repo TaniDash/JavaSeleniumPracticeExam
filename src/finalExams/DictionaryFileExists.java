@@ -1,4 +1,4 @@
-package dictionaryExercise;
+package finalExams;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
