@@ -12,7 +12,7 @@ public class RanGenerator {
 		int min= 100;
 				
 		int[] myArr = new int[500];
-		System.out.println(myArr.length);
+		
 		
 		for(int i=0; i<myArr.length; i++) {
 			myArr[i]=rn.nextInt(max-min)+min;
