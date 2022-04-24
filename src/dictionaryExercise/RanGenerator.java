@@ -6,37 +6,38 @@ import java.util.Scanner;
 public class RanGenerator {
 
 	public static void main(String[] args) {
-
-		int startCount = 100;
-		int n = 0;
-		int endCount = 1000;
-		int arraysize = endCount - startCount;
-		int numbers[] = new int[arraysize + 1];
-
-		Random rn = new Random();
-
-		for (int counter = startCount; counter <= endCount; counter++) {
-			int c = n++;
-			int num = rn.nextInt(1000);
-			numbers[c] = num;
-			System.out.println(numbers[c]);
-
-		}
-		int smallest = numbers[0];
-		int largest = numbers[0];
 		
-//		Scanner ui = new Scanner(System.in);
-//		System.out.println("Give the Nth smallest number : ");
-//		int nthNum =ui.nextInt();
-
-		for (int i = 1; i < numbers.length; i++) {
-			if (numbers[i] > largest)
-				largest = numbers[i];
-			else if (numbers[i] < smallest)
-				smallest = numbers[i];
+		Random rn = new Random();
+		int max= 1000;
+		int min= 100;
+				
+		int[] myArr = new int[500];
+		System.out.println(myArr.length);
+		
+		for(int i=0; i<myArr.length; i++) {
+			myArr[i]=rn.nextInt(max-min)+min;
 		}
-//		System.out.println("Largest Number is : " + largest);
-		System.out.println("Smallest Number is : " + smallest);
+			for(int num : myArr) {
+			System.out.println(num);
+		}
+		Scanner ui = new Scanner(System.in);
+		System.out.println("Give the Nth smallest number : ");
+		int myNum =ui.nextInt();
+		
+		for(int j=0; j<myArr.length; j++) {
+			for(int k=1;k<myArr.length; k++ ) {
+				int p =0;
+				if(myArr[k-1]>myArr[k]) {
+				p=myArr[k-1];
+				myArr[k-1]=myArr[k];
+				myArr[k]=p;
+				}
+			}
+			
+		}
+	
+		System.out.println(myArr[myNum-1]);
+
 	}
 
 }
